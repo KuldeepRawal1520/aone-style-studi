@@ -1,33 +1,38 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="AONE Style Studio — precision cuts, grooming and smoothing treatments." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AONE Style Studio — precision haircuts, grooming and smoothing treatments.">
   <title>AONE Style Studio — The Art of the Cut</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="AONE Style Studio home">
-      <span class="brand-mark">A</span>
-      <span>
-        <strong>AONE</strong>
-        <small>STYLE STUDIO</small>
-      </span>
+    <a class="logo" href="#top" aria-label="AONE Style Studio home">
+      <svg viewBox="0 0 230 74" role="img" aria-label="AONE Style Studio">
+        <g class="logo-ink">
+          <path d="M8 57 34 7l26 50M19 38h30" />
+          <circle cx="91" cy="34" r="24" />
+          <path d="M75 51 108 18M77 18l30 34" />
+          <path d="M121 57V10l34 47V10M174 10h43M174 34h35M174 57h43" />
+        </g>
+        <text x="70" y="72">STYLE STUDIO</text>
+      </svg>
     </a>
-
-    <nav class="desktop-nav" aria-label="Primary navigation">
+    <nav class="desktop-nav">
       <a href="#services">Services</a>
       <a href="#about">About</a>
       <a href="#gallery">Gallery</a>
-      <a href="#location">Location</a>
+      <a href="#booking">Book</a>
     </nav>
-
-    <a class="header-cta" href="#booking">Book Appointment</a>
+    <div class="header-actions">
+      <a class="phone-link" href="tel:+10000000000">Call Now</a>
+      <a class="button button-dark small" href="#booking">Book Appointment</a>
+    </div>
     <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
   </header>
 
@@ -35,198 +40,86 @@
     <a href="#services">Services</a>
     <a href="#about">About</a>
     <a href="#gallery">Gallery</a>
-    <a href="#location">Location</a>
-    <a class="mobile-book" href="#booking">Book Appointment</a>
+    <a href="#booking">Book Appointment</a>
+    <a href="tel:+10000000000">Call Studio</a>
   </div>
 
   <main>
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">EST. STUDIO · CANADA</p>
-        <h1>The art<br><em>of the cut.</em></h1>
-        <p class="hero-text">A quiet, considered space for precision haircuts, smoothing and grooming. Walk in a guest, leave a regular.</p>
+        <p class="eyebrow">PRECISION / STYLE / CONFIDENCE</p>
+        <h1>The art<br>of the <em>cut.</em></h1>
+        <p class="hero-lede">A quiet, considered space for precision haircuts, smoothing and grooming. Walk in a guest, leave a regular.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#booking">Book Appointment <span>↗</span></a>
-          <a class="button button-ghost" href="#location">Get Directions</a>
+          <a class="button button-dark" href="#booking">Book an Appointment <span>↗</span></a>
+          <a class="button button-outline" href="#location">Get Directions</a>
         </div>
-        <div class="hero-meta">
-          <span>MON — SUN</span>
-          <span>10:00 AM — 8:00 PM</span>
+        <div class="hero-details">
+          <div><span class="detail-icon">◷</span><span><b>Mon — Sun</b><small>10:00 AM — 8:00 PM</small></span></div>
+          <div><span class="detail-icon">✦</span><span><b>Walk-ins limited</b><small>Reservations recommended</small></span></div>
+          <div><span class="detail-icon">☆</span><span><b>Especially recommended</b><small>Evenings & weekends</small></span></div>
         </div>
       </div>
-      <div class="hero-art" aria-label="AONE Style Studio visual">
-        <div class="portrait-card">
-          <div class="portrait-placeholder">
-            <span>YOUR<br>STUDIO<br>PHOTO</span>
-          </div>
-          <div class="portrait-caption">
-            <span>AONE</span>
-            <span>01 / 06</span>
-          </div>
+      <div class="hero-visual">
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=1200&q=85" alt="Barber styling a client's hair">
+          <div class="image-overlay"></div>
+          <div class="hero-script">Style.<br>Looks.<br>Confidence.</div>
+          <div class="image-tag">AONE / 01</div>
         </div>
-        <div class="hero-badge">PRECISION<br>GROOMING</div>
+        <div class="circle-stamp">AONE<br><span>STYLE STUDIO</span><b>✂</b></div>
       </div>
     </section>
 
-    <section class="marquee" aria-label="Studio values">
-      <div>PRECISION <span>✦</span> CRAFT <span>✦</span> CONFIDENCE <span>✦</span> DETAIL <span>✦</span> PRECISION <span>✦</span> CRAFT <span>✦</span> CONFIDENCE <span>✦</span> DETAIL</div>
-    </section>
+    <div class="ticker"><div>PRECISION <i>✦</i> CRAFT <i>✦</i> CONFIDENCE <i>✦</i> DETAIL <i>✦</i> PRECISION <i>✦</i> CRAFT <i>✦</i> CONFIDENCE <i>✦</i> DETAIL</div></div>
 
     <section class="section services" id="services">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">MENU</p>
-          <h2>Services <em>&amp; Pricing</em></h2>
-        </div>
-        <p>Tap any service below to begin booking. All prices in CAD.</p>
+      <div class="section-top">
+        <div><p class="eyebrow">OUR SERVICES</p><h2>Services <em>& Pricing</em></h2></div>
+        <p>Tap any service to begin booking.<br>All prices are in CAD.</p>
       </div>
-
       <div class="service-grid">
-        <article class="service-card">
-          <div><h3>Men's Haircut</h3><p>Precision cut, hot towel finish.</p></div>
-          <strong>$20</strong>
-          <a href="#booking" data-service="Men's Haircut">Book this <span>↗</span></a>
-        </article>
-        <article class="service-card">
-          <div><h3>Regular Children's Haircut</h3><p>Gentle, patient styling for kids.</p></div>
-          <strong>$20</strong>
-          <a href="#booking" data-service="Regular Children's Haircut">Book this <span>↗</span></a>
-        </article>
-        <article class="service-card">
-          <div><h3>Women's Haircut</h3><p>Tailored cut, shape and style.</p></div>
-          <strong>$45</strong>
-          <a href="#booking" data-service="Women's Haircut">Book this <span>↗</span></a>
-        </article>
-        <article class="service-card">
-          <div><h3>Smoothing (Men)</h3><p>Sleek, frizz-free finish.</p></div>
-          <strong>$100</strong>
-          <a href="#booking" data-service="Smoothing (Men)">Book this <span>↗</span></a>
-        </article>
-        <article class="service-card">
-          <div><h3>Smoothing (Women)</h3><p>Salon-grade smoothing treatment.</p></div>
-          <strong>$150</strong>
-          <a href="#booking" data-service="Smoothing (Women)">Book this <span>↗</span></a>
-        </article>
-        <article class="service-card">
-          <div><h3>Clean Up</h3><p>Neckline, sideburns &amp; detailing.</p></div>
-          <strong>$40</strong>
-          <a href="#booking" data-service="Clean Up">Book this <span>↗</span></a>
-        </article>
+        <article class="service-card featured"><div class="service-photo"><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=900&q=80" alt="Men's haircut"></div><div class="service-body"><span class="service-number">01</span><h3>Men's Haircut</h3><p>Precision cut, hot towel finish.</p><strong>$20</strong><a href="#booking" data-service="Men's Haircut">Book this <span>→</span></a></div></article>
+        <article class="service-card"><div class="service-photo"><img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=900&q=80" alt="Children's haircut"></div><div class="service-body"><span class="service-number">02</span><h3>Regular Children's Haircut</h3><p>Gentle, patient styling for kids.</p><strong>$20</strong><a href="#booking" data-service="Regular Children's Haircut">Book this <span>→</span></a></div></article>
+        <article class="service-card"><div class="service-photo"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80" alt="Women's haircut"></div><div class="service-body"><span class="service-number">03</span><h3>Women's Haircut</h3><p>Tailored cut, shape and style.</p><strong>$45</strong><a href="#booking" data-service="Women's Haircut">Book this <span>→</span></a></div></article>
+        <article class="service-card"><div class="service-photo"><img src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?auto=format&fit=crop&w=900&q=80" alt="Men's styling"></div><div class="service-body"><span class="service-number">04</span><h3>Smoothing (Men)</h3><p>Sleek, frizz-free finish.</p><strong>$100</strong><a href="#booking" data-service="Smoothing (Men)">Book this <span>→</span></a></div></article>
+        <article class="service-card"><div class="service-photo"><img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=900&q=80" alt="Women's hair treatment"></div><div class="service-body"><span class="service-number">05</span><h3>Smoothing (Women)</h3><p>Salon-grade smoothing treatment.</p><strong>$150</strong><a href="#booking" data-service="Smoothing (Women)">Book this <span>→</span></a></div></article>
+        <article class="service-card"><div class="service-photo"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&q=80" alt="Beard and neckline clean up"></div><div class="service-body"><span class="service-number">06</span><h3>Clean Up</h3><p>Neckline, sideburns & detailing.</p><strong>$40</strong><a href="#booking" data-service="Clean Up">Book this <span>→</span></a></div></article>
       </div>
     </section>
 
-    <section class="section split-section" id="about">
-      <div class="section-label">
-        <p class="eyebrow">THE STUDIO</p>
-        <span>02 / 06</span>
-      </div>
-      <div class="split-content">
-        <h2>Good grooming<br><em>is a feeling.</em></h2>
-        <p>AONE Style Studio is built around a simple idea: the details matter. From the first consultation to the final finish, every service is considered, precise and personal.</p>
-        <p>Come in for the cut. Stay for the experience.</p>
-      </div>
+    <section class="story" id="about">
+      <div class="story-image"><img src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=1200&q=85" alt="Modern barber studio interior"></div>
+      <div class="story-copy"><p class="eyebrow">ABOUT AONE</p><h2>More than<br>a <em>haircut.</em></h2><p>AONE Style Studio is built on a simple idea — great grooming should feel effortless. We focus on precision, consistency and a relaxed experience, so you always leave looking and feeling your best.</p><p class="quote">“Come in for the cut.<br>Stay for the experience.”</p><a class="text-link" href="#booking">Reserve your chair <span>↗</span></a></div>
     </section>
 
     <section class="section gallery" id="gallery">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">THE WORK</p>
-          <h2>Gallery <em>&amp; Craft</em></h2>
-        </div>
-        <p>Real studio photography can be added here before launch.</p>
-      </div>
+      <div class="section-top"><div><p class="eyebrow">THE WORK</p><h2>Gallery <em>& Craft</em></h2></div><p>Real AONE work will be featured here. We’ll replace the temporary editorial imagery with the studio photos you supplied.</p></div>
       <div class="gallery-grid">
-        <div class="gallery-tile tall"><span>STUDIO<br>PHOTO</span><small>01</small></div>
-        <div class="gallery-tile"><span>THE<br>CRAFT</span><small>02</small></div>
-        <div class="gallery-tile"><span>DETAIL<br>WORK</span><small>03</small></div>
-        <div class="gallery-tile wide"><span>THE<br>FINISH</span><small>04</small></div>
-        <div class="gallery-tile"><span>AONE<br>SPACE</span><small>05</small></div>
+        <div class="gallery-card large"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=85" alt="Barber at work"><span>THE CRAFT / 01</span></div>
+        <div class="gallery-card"><img src="https://images.unsplash.com/photo-1521490683712-3e2a4d4f3f4b?auto=format&fit=crop&w=900&q=85" alt="Hair styling detail"><span>DETAIL / 02</span></div>
+        <div class="gallery-card"><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=900&q=85" alt="Fresh haircut"><span>THE FINISH / 03</span></div>
+        <div class="gallery-card wide"><img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1400&q=85" alt="Barber shop tools"><span>THE STUDIO / 04</span></div>
       </div>
     </section>
 
-    <section class="booking-section" id="booking">
-      <div class="booking-intro">
-        <p class="eyebrow">RESERVE YOUR CHAIR</p>
-        <h2>Let's make<br><em>it sharp.</em></h2>
-        <p>Choose a service and tell us when you'd like to visit. Online booking will be connected to the studio schedule in the next phase.</p>
-      </div>
-
+    <section class="booking" id="booking">
+      <div class="booking-copy"><p class="eyebrow">RESERVE YOUR CHAIR</p><h2>Let's make<br>it <em>sharp.</em></h2><p>Choose your service and preferred time. Live availability and Google Sheets booking will be connected in Phase 2.</p></div>
       <form class="booking-form" id="bookingForm">
-        <label>Service
-          <select id="service" required>
-            <option value="">Select a service</option>
-            <option>Men's Haircut</option>
-            <option>Regular Children's Haircut</option>
-            <option>Women's Haircut</option>
-            <option>Smoothing (Men)</option>
-            <option>Smoothing (Women)</option>
-            <option>Clean Up</option>
-          </select>
-        </label>
-
-        <div class="form-row">
-          <label>Date
-            <input id="date" type="date" required />
-          </label>
-          <label>Preferred time
-            <select id="time" required>
-              <option value="">Select a time</option>
-              <option>10:00 AM</option><option>10:30 AM</option><option>11:00 AM</option>
-              <option>11:30 AM</option><option>12:00 PM</option><option>12:30 PM</option>
-              <option>1:00 PM</option><option>1:30 PM</option><option>2:00 PM</option>
-              <option>2:30 PM</option><option>3:00 PM</option><option>3:30 PM</option>
-              <option>4:00 PM</option><option>4:30 PM</option><option>5:00 PM</option>
-              <option>5:30 PM</option><option>6:00 PM</option><option>6:30 PM</option>
-              <option>7:00 PM</option><option>7:30 PM</option>
-            </select>
-          </label>
-        </div>
-
-        <div class="form-row">
-          <label>Your name
-            <input id="name" type="text" placeholder="Full name" required />
-          </label>
-          <label>Phone
-            <input id="phone" type="tel" placeholder="416 555 0123" required />
-          </label>
-        </div>
-
-        <button class="button button-primary submit-button" type="submit">Continue Booking <span>↗</span></button>
-        <p class="form-note">Booking is currently a design preview. Live availability and Google Sheets integration will be added in Phase 2.</p>
+        <label>Service<select id="service" required><option value="">Select a service</option><option>Men's Haircut</option><option>Regular Children's Haircut</option><option>Women's Haircut</option><option>Smoothing (Men)</option><option>Smoothing (Women)</option><option>Clean Up</option></select></label>
+        <div class="form-row"><label>Date<input id="date" type="date" required></label><label>Preferred time<select id="time" required><option value="">Select a time</option><option>10:00 AM</option><option>10:30 AM</option><option>11:00 AM</option><option>11:30 AM</option><option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option><option>2:00 PM</option><option>2:30 PM</option><option>3:00 PM</option><option>3:30 PM</option><option>4:00 PM</option><option>4:30 PM</option><option>5:00 PM</option><option>5:30 PM</option><option>6:00 PM</option><option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option></select></label></div>
+        <div class="form-row"><label>Your name<input id="name" type="text" placeholder="Full name" required></label><label>Phone<input id="phone" type="tel" placeholder="416 555 0123" required></label></div>
+        <button class="button button-light" type="submit">Continue Booking <span>↗</span></button>
+        <p class="form-note">This is currently a preview. No booking is submitted yet.</p>
       </form>
     </section>
 
-    <section class="section location-section" id="location">
-      <div class="location-card">
-        <div>
-          <p class="eyebrow">FIND US</p>
-          <h2>Your next<br><em>good cut.</em></h2>
-        </div>
-        <div class="location-details">
-          <p class="muted">ADDRESS TO BE CONFIRMED</p>
-          <p>Canada</p>
-          <p class="hours"><strong>Mon — Sun</strong><br>10:00 AM — 8:00 PM</p>
-          <div class="location-actions">
-            <a class="button button-primary" href="https://www.google.com/maps" target="_blank" rel="noopener">Get Directions ↗</a>
-            <a class="button button-ghost" href="tel:+10000000000">Call Studio</a>
-          </div>
-        </div>
-      </div>
+    <section class="section location" id="location">
+      <div class="location-card"><div><p class="eyebrow">FIND AONE</p><h2>Your next<br><em>good cut.</em></h2></div><div class="location-info"><p class="pending">ADDRESS TO BE CONFIRMED</p><p>Canada</p><p class="hours"><b>Mon — Sun</b><br>10:00 AM — 8:00 PM</p><div class="hero-actions"><a class="button button-dark" href="https://www.google.com/maps" target="_blank" rel="noopener">Get Directions ↗</a><a class="button button-outline" href="tel:+10000000000">Call Studio</a></div></div></div>
     </section>
   </main>
 
-  <footer>
-    <div class="footer-top">
-      <div class="brand footer-brand"><span class="brand-mark">A</span><span><strong>AONE</strong><small>STYLE STUDIO</small></span></div>
-      <p>The art of the cut.</p>
-      <a href="#top">Back to top ↑</a>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 AONE Style Studio</span>
-      <span>EST. STUDIO · CANADA</span>
-    </div>
-  </footer>
-
+  <footer><div class="footer-main"><a class="logo" href="#top"><svg viewBox="0 0 230 74"><g class="logo-ink"><path d="M8 57 34 7l26 50M19 38h30"/><circle cx="91" cy="34" r="24"/><path d="M75 51 108 18M77 18l30 34"/><path d="M121 57V10l34 47V10M174 10h43M174 34h35M174 57h43"/></g><text x="70" y="72">STYLE STUDIO</text></svg></a><p>The art of the cut.</p><a href="#top">Back to top ↑</a></div><div class="footer-bottom"><span>© 2026 AONE Style Studio</span><span>EST. STUDIO · CANADA</span></div></footer>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="script.js"></script>
 </body>
