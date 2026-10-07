@@ -82,3 +82,47 @@ body{overflow-x:hidden}
   .location-info .hero-actions{display:grid;grid-template-columns:1fr}
   .location-info .hero-actions .button{width:100%}
 }
+
+
+/* 3D editorial layer */
+.hero-visual{perspective:1200px;transform-style:preserve-3d}
+.hero-3d{position:absolute;pointer-events:none;transform-style:preserve-3d;z-index:5}
+.hero-orb{width:150px;height:150px;right:-42px;bottom:35px;border-radius:50%;transform:translateZ(70px) rotateX(12deg) rotateY(-18deg);filter:drop-shadow(0 24px 28px rgba(31,22,14,.18))}
+.orb-core{position:absolute;inset:20px;border-radius:50%;display:grid;place-items:center;font-family:"Playfair Display",serif;font-size:58px;color:#fff4df;background:radial-gradient(circle at 30% 25%,#f6d99e 0 5%,#c99851 22%,#8c5f2d 58%,#392518 100%);box-shadow:inset -18px -20px 30px rgba(25,14,5,.35),inset 10px 8px 18px rgba(255,244,216,.45),0 18px 35px rgba(56,36,18,.25)}
+.orb-ring{position:absolute;inset:-5px;border:1px solid rgba(184,138,72,.8);border-radius:50%;transform:rotateX(68deg) rotateZ(20deg)}
+.ring-two{inset:8px;transform:rotateY(72deg) rotateZ(-28deg);border-color:rgba(255,244,220,.65)}
+.orb-glint{position:absolute;width:28px;height:12px;border-radius:50%;background:rgba(255,255,255,.6);filter:blur(5px);top:31px;left:39px;transform:rotate(-25deg)}
+.hero-cube{left:-28px;top:34px;width:92px;height:92px;transform:rotateX(15deg) rotateY(-25deg) rotateZ(-6deg) translateZ(80px);background:linear-gradient(135deg,#2c2219,#0f0b08);box-shadow:18px 22px 28px rgba(35,24,14,.2);border:1px solid rgba(255,255,255,.12)}
+.hero-cube:before,.hero-cube:after{content:"";position:absolute;inset:8px;border:1px solid rgba(184,138,72,.5)}
+.hero-cube:after{transform:translateZ(12px);border-color:rgba(255,242,212,.25)}
+.hero-cube span{position:absolute;inset:0;display:grid;place-items:center;font:600 11px "DM Sans";letter-spacing:.28em;color:#d6b071;transform:translateZ(20px)}
+.hero-cube i,.hero-cube b,.hero-cube em{position:absolute;display:block;background:#b88a48}
+.hero-cube i{width:2px;height:18px;right:15px;top:13px;transform:rotate(45deg)}
+.hero-cube b{width:18px;height:2px;left:12px;bottom:14px;transform:rotate(-12deg)}
+.hero-cube em{width:7px;height:7px;border-radius:50%;right:12px;bottom:12px}
+.service-card{transform-style:preserve-3d;perspective:900px}
+.service-card:before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,.18),transparent 28%,transparent 70%,rgba(184,138,72,.08));opacity:0;transition:.25s}
+.service-card:hover:before{opacity:1}
+.service-card:hover{transform:translateY(-8px) rotateX(2deg) rotateY(-2deg);box-shadow:16px 22px 45px rgba(42,30,18,.13)}
+.service-photo,.service-body{transform:translateZ(1px)}
+.section-orbit{width:72px;height:30px;position:relative;margin-top:14px;perspective:500px;opacity:.8}
+.section-orbit:before{content:"";position:absolute;inset:5px 0;border:1px solid var(--gold);border-radius:50%;transform:rotateX(62deg) rotateZ(-12deg)}
+.section-orbit span{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--gold);left:31px;top:9px;box-shadow:0 2px 10px rgba(184,138,72,.45)}
+.section-orbit i{position:absolute;left:34px;top:3px;font-style:normal;font-size:10px;color:var(--gold);animation:orbitFloat 3s ease-in-out infinite}
+@keyframes orbitFloat{0%,100%{transform:translateY(3px)}50%{transform:translateY(-5px)}}
+@media(max-width:950px){
+ .hero-orb{right:-18px;bottom:20px;width:112px;height:112px}
+ .orb-core{inset:15px;font-size:44px}
+ .hero-cube{left:-12px;top:22px;width:72px;height:72px}
+ .hero-cube span{font-size:8px}
+}
+@media(max-width:620px){
+ .hero-orb{right:-8px;bottom:12px;width:86px;height:86px}
+ .orb-core{inset:11px;font-size:34px}
+ .hero-cube{left:-8px;top:15px;width:58px;height:58px}
+ .hero-cube span{font-size:6px;letter-spacing:.18em}
+ .hero-cube i{right:9px;top:8px}.hero-cube b{left:8px;bottom:9px}.hero-cube em{right:8px;bottom:8px}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-3d,.section-orbit i,.ticker-track{animation:none!important}
+}
