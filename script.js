@@ -33,3 +33,96 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && window.mat
     });
   }
 }
+
+
+/* Premium motion: reveal, magnetic controls, cursor, tilt and parallax */
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const finePointer = window.matchMedia("(pointer:fine)").matches;
+
+if (!reduceMotion) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.14, rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll(".reveal-section").forEach(el => revealObserver.observe(el));
+
+  if (finePointer) {
+    const dot = document.querySelector(".cursor-dot");
+    const ring = document.querySelector(".cursor-ring");
+    let mx = -100, my = -100, rx = -100, ry = -100;
+    window.addEventListener("pointermove", e => {
+      mx=e.clientX; my=e.clientY;
+      if(dot){dot.style.opacity="1";dot.style.left=mx+"px";dot.style.top=my+"px";}
+    });
+    const cursorLoop = () => {
+      rx += (mx-rx)*0.16; ry += (my-ry)*0.16;
+      if(ring){ring.style.opacity="1";ring.style.left=rx+"px";ring.style.top=ry+"px";}
+      requestAnimationFrame(cursorLoop);
+    };
+    cursorLoop();
+
+    document.querySelectorAll("a,button,.service-card,.gallery-card").forEach(el=>{
+      el.addEventListener("mouseenter",()=>ring?.classList.add("is-hover"));
+      el.addEventListener("mouseleave",()=>ring?.classList.remove("is-hover"));
+    });
+
+    document.querySelectorAll(".magnetic").forEach(el=>{
+      el.addEventListener("pointermove",e=>{
+        const r=el.getBoundingClientRect();
+        const x=(e.clientX-r.left-r.width/2)/(r.width/2);
+        const y=(e.clientY-r.top-r.height/2)/(r.height/2);
+        el.style.transform=`translate(${x*7}px,${y*5}px)`;
+      });
+      el.addEventListener("pointerleave",()=>el.style.transform="");
+    });
+
+    document.querySelectorAll(".service-card,.gallery-card").forEach(card=>{
+      card.addEventListener("pointermove",e=>{
+        const r=card.getBoundingClientRect();
+        const x=(e.clientX-r.left)/r.width-.5;
+        const y=(e.clientY-r.top)/r.height-.5;
+        card.style.transform=`perspective(900px) rotateX(${-y*4}deg) rotateY(${x*5}deg) translateY(-7px)`;
+        const img=card.querySelector("img");
+        if(img) img.style.transform=`scale(1.06) translate(${x*-5}px,${y*-5}px)`;
+      });
+      card.addEventListener("pointerleave",()=>{
+        card.style.transform="";
+        const img=card.querySelector("img");
+        if(img) img.style.transform="";
+      });
+    });
+
+    const heroImage=document.querySelector(".hero-image");
+    if(heroImage){
+      heroImage.addEventListener("pointermove",e=>{
+        const r=heroImage.getBoundingClientRect();
+        const x=(e.clientX-r.left)/r.width-.5;
+        const y=(e.clientY-r.top)/r.height-.5;
+        heroImage.style.transform=`scale(1.015) translate(${x*-7}px,${y*-5}px)`;
+      });
+      heroImage.addEventListener("pointerleave",()=>heroImage.style.transform="");
+    }
+
+    let ticking=false;
+    window.addEventListener("scroll",()=>{
+      if(ticking)return;
+      ticking=true;
+      requestAnimationFrame(()=>{
+        const scrollY=window.scrollY;
+        document.querySelectorAll("[data-parallax-section]").forEach(section=>{
+          const rect=section.getBoundingClientRect();
+          if(rect.bottom>0 && rect.top<window.innerHeight){
+            const progress=(window.innerHeight/2-(rect.top+rect.height/2))/window.innerHeight;
+            const heading=section.querySelector(".section-top,.story-copy");
+            if(heading) heading.style.transform=`translate3d(0,${progress*-14}px,0)`;
+          }
+        });
+        ticking=false;
+      });
+    },{passive:true});
+  }
+}
