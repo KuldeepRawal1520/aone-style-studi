@@ -171,3 +171,49 @@ footer{background:#e9dece}
  .banner-content h1{font-size:clamp(62px,14vw,82px)}
  .service-photo{height:235px}
 }
+
+
+/* Final hero fix: full-bleed photo, no empty brown bands */
+.hero-banner{
+ height:clamp(640px,78vh,860px)!important;
+ min-height:640px!important;
+ margin-top:86px;
+ background:#21150e;
+}
+.banner-slides,.banner-slide{position:absolute;inset:0;width:100%;height:100%}
+.banner-slide{overflow:hidden;background:#21150e}
+.banner-slide img{
+ width:100%!important;height:100%!important;
+ object-fit:cover!important;
+ object-position:center 30%!important;
+}
+.banner-content{
+ height:100%!important;
+ padding-top:50px!important;
+ padding-bottom:70px!important;
+}
+.banner-shade{
+ background:linear-gradient(90deg,rgba(27,17,10,.88) 0%,rgba(27,17,10,.72) 34%,rgba(27,17,10,.22) 70%,rgba(27,17,10,.12) 100%),
+ linear-gradient(0deg,rgba(27,17,10,.4),transparent 34%)!important;
+}
+@media(max-width:950px){
+ .hero-banner{height:690px!important;min-height:620px!important;margin-top:76px}
+ .banner-slide img{object-position:center 24%!important}
+ .banner-content{padding-top:40px!important;padding-bottom:90px!important}
+}
+@media(max-width:620px){
+ .hero-banner{height:760px!important;min-height:700px!important;margin-top:70px}
+ .banner-slide img{object-position:58% 20%!important}
+ .banner-shade{
+  background:linear-gradient(90deg,rgba(27,17,10,.72),rgba(27,17,10,.28) 100%),
+  linear-gradient(0deg,rgba(27,17,10,.88) 0%,rgba(27,17,10,.5) 46%,rgba(27,17,10,.08) 100%)!important;
+ }
+ .banner-content{
+  justify-content:flex-end!important;
+  padding:40px 6vw 145px!important;
+ }
+ .banner-content h1{font-size:clamp(60px,13.5vw,82px)!important}
+ .banner-content>p:not(.eyebrow){font-size:13px;max-width:340px}
+ .banner-controls{bottom:24px!important}
+ .banner-caption{bottom:24px!important}
+}
