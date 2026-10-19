@@ -217,3 +217,43 @@ footer{background:#e9dece}
  .banner-controls{bottom:24px!important}
  .banner-caption{bottom:24px!important}
 }
+
+
+/* Haircut inspiration page */
+.inspiration-page{background:var(--paper);color:var(--ink)}
+.inspiration-page .site-header{background:rgba(233,222,206,.97)}
+.inspiration-page .desktop-nav .current-page{color:var(--ink)}
+.inspiration-page .desktop-nav .current-page:after{right:0}
+.inspiration-hero{position:relative;min-height:470px;margin-top:86px;padding:105px 7vw 85px;background:#21150e;color:#f4e9d8;overflow:hidden}
+.inspiration-hero:after{content:"AONE";position:absolute;right:4vw;bottom:-.28em;font-family:"Playfair Display",serif;font-size:clamp(170px,30vw,420px);line-height:1;color:rgba(244,233,216,.045);pointer-events:none}
+.inspiration-hero .eyebrow{color:#d8a65d}
+.inspiration-hero h1{position:relative;z-index:1;font-family:"Playfair Display",serif;font-weight:500;letter-spacing:-.055em;line-height:.95;font-size:clamp(64px,8vw,112px);max-width:900px;margin:24px 0}
+.inspiration-hero h1 em,.inspiration-heading h2 em,.inspiration-cta h2 em{color:#d0a365;font-style:italic}
+.inspiration-hero>p:not(.eyebrow){position:relative;z-index:1;max-width:610px;color:#e1d0bb;font-size:15px;line-height:1.8}
+.inspiration-hero .button{position:relative;z-index:1;margin-top:20px}
+.inspiration-hero-mark{position:absolute;right:7vw;bottom:38px;color:#d8c4aa;font-size:9px;letter-spacing:.22em}
+.inspiration-content{max-width:1540px;margin:auto;padding:100px 7vw 120px}
+.inspiration-heading{display:grid;grid-template-columns:1fr .55fr;gap:45px;align-items:end;margin-bottom:42px}
+.inspiration-heading h2{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(52px,6vw,78px);line-height:.98;letter-spacing:-.04em;margin:15px 0 0}
+.inspiration-heading>p{max-width:420px;justify-self:end;color:var(--muted);font-size:13px;line-height:1.8;margin:0}
+.haircut-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.haircut-card{min-width:0;background:#f0e5d5;border:1px solid #c4aa8c;transition:transform .25s,box-shadow .25s}
+.haircut-card:hover{transform:translateY(-4px);box-shadow:0 16px 35px rgba(42,30,18,.1)}
+.haircut-image{position:relative;height:330px;background:#d8c4aa;overflow:hidden}
+.haircut-image img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .5s}
+.haircut-card:hover .haircut-image img{transform:scale(1.035)}
+.haircut-number{position:absolute;left:15px;top:15px;background:rgba(33,21,14,.86);color:#f4e9d8;padding:7px 10px;font-size:10px;letter-spacing:.12em}
+.haircut-copy{padding:23px 24px 20px}
+.haircut-tag{margin:0 0 11px;color:#9b6d30;font-size:9px;font-weight:700;letter-spacing:.17em}
+.haircut-copy h3{font-family:"Playfair Display",serif;font-size:26px;font-weight:500;line-height:1.12;margin:0 0 12px}
+.haircut-copy>p:not(.haircut-tag){min-height:64px;margin:0 0 20px;color:var(--muted);font-size:12px;line-height:1.75}
+.haircut-copy>a{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #d1b99b;padding-top:14px;font-size:11px;font-weight:700}
+.haircut-copy>a span{color:#9b6d30}
+.inspiration-cta{padding:85px 7vw 95px;text-align:center;background:#2a1b11;color:#f4e9d8}
+.inspiration-cta .eyebrow{color:#d8a65d}
+.inspiration-cta h2{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(54px,6.5vw,84px);line-height:.98;margin:18px 0}
+.inspiration-cta>p:not(.eyebrow){max-width:520px;margin:0 auto;color:#d5c1a9;font-size:13px;line-height:1.8}
+.inspiration-cta .hero-actions{justify-content:center}
+.inspiration-cta .button-outline{color:#f4e9d8;border-color:#a58b6c}
+@media(max-width:950px){.inspiration-hero{margin-top:76px;padding:85px 6vw 80px}.inspiration-content{padding:80px 6vw 95px}.haircut-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.haircut-image{height:300px}.inspiration-heading{grid-template-columns:1fr;gap:20px}.inspiration-heading>p{justify-self:start}.inspiration-hero-mark{right:6vw;font-size:8px}}
+@media(max-width:620px){.inspiration-hero{margin-top:70px;min-height:440px;padding:75px 6vw 75px}.inspiration-hero h1{font-size:clamp(57px,13vw,78px)}.inspiration-hero>p:not(.eyebrow){font-size:13px}.inspiration-hero-mark{position:relative;display:block;right:auto;bottom:auto;margin-top:35px;font-size:7px}.inspiration-content{padding:65px 6vw 75px}.haircut-grid{grid-template-columns:1fr;gap:18px}.haircut-image{height:auto;aspect-ratio:4/3}.haircut-copy{padding:21px}.haircut-copy>p:not(.haircut-tag){min-height:0}.inspiration-cta{padding:70px 6vw}.inspiration-cta .hero-actions{display:grid;grid-template-columns:1fr}.inspiration-cta .hero-actions .button{width:100%}}
