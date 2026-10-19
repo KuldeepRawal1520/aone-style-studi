@@ -257,3 +257,17 @@ footer{background:#e9dece}
 .inspiration-cta .button-outline{color:#f4e9d8;border-color:#a58b6c}
 @media(max-width:950px){.inspiration-hero{margin-top:76px;padding:85px 6vw 80px}.inspiration-content{padding:80px 6vw 95px}.haircut-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.haircut-image{height:300px}.inspiration-heading{grid-template-columns:1fr;gap:20px}.inspiration-heading>p{justify-self:start}.inspiration-hero-mark{right:6vw;font-size:8px}}
 @media(max-width:620px){.inspiration-hero{margin-top:70px;min-height:440px;padding:75px 6vw 75px}.inspiration-hero h1{font-size:clamp(57px,13vw,78px)}.inspiration-hero>p:not(.eyebrow){font-size:13px}.inspiration-hero-mark{position:relative;display:block;right:auto;bottom:auto;margin-top:35px;font-size:7px}.inspiration-content{padding:65px 6vw 75px}.haircut-grid{grid-template-columns:1fr;gap:18px}.haircut-image{height:auto;aspect-ratio:4/3}.haircut-copy{padding:21px}.haircut-copy>p:not(.haircut-tag){min-height:0}.inspiration-cta{padding:70px 6vw}.inspiration-cta .hero-actions{display:grid;grid-template-columns:1fr}.inspiration-cta .hero-actions .button{width:100%}}
+
+
+/* Give Ashok's original client photos first priority on the inspiration page */
+.client-inspiration{padding-bottom:48px}
+.client-heading{margin-bottom:34px}
+.client-gallery .haircut-image{height:370px}
+.client-card{background:#f4eadb;border-color:#b99462}
+.client-card .haircut-number{background:#b58a4d;color:#21150e}
+.client-card .haircut-tag{color:#825a27}
+.client-card .haircut-copy>a{border-top-color:#cbb18e}
+.more-inspiration{padding-top:35px}
+.more-inspiration .inspiration-heading{padding-top:34px;border-top:1px solid #cbb99f}
+@media(max-width:950px){.client-gallery .haircut-image{height:320px}.client-inspiration{padding-bottom:35px}}
+@media(max-width:620px){.client-gallery .haircut-image{height:auto;aspect-ratio:4/3}.more-inspiration{padding-top:25px}}
