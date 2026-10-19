@@ -14,7 +14,7 @@ const today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffs
 bookingForm.addEventListener("submit",e=>{e.preventDefault();if(!bookingForm.reportValidity())return;toast.textContent="Nice choice — live availability will be connected next.";toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),4000)});
 
 
-// Accessible four-photo hero slideshow with manual controls and autoplay.
+// Accessible ten-photo hero slideshow with manual controls and autoplay.
 (() => {
   const banner = document.querySelector(".hero-banner");
   if (!banner) return;
@@ -47,8 +47,6 @@ bookingForm.addEventListener("submit",e=>{e.preventDefault();if(!bookingForm.rep
   prev?.addEventListener("click", () => { show(current - 1); start(); });
   next?.addEventListener("click", () => { show(current + 1); start(); });
   dots.forEach((dot, i) => dot.addEventListener("click", () => { show(i); start(); }));
-  banner.addEventListener("mouseenter", stop);
-  banner.addEventListener("mouseleave", start);
   banner.addEventListener("focusin", stop);
   banner.addEventListener("focusout", start);
   document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
