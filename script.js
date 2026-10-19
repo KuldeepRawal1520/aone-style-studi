@@ -23,7 +23,7 @@ bookingForm.addEventListener("submit",e=>{e.preventDefault();if(!bookingForm.rep
   const counter = banner.querySelector("#bannerCounter");
   const prev = banner.querySelector("#bannerPrev");
   const next = banner.querySelector("#bannerNext");
-  if (slides.length !== 4 || dots.length !== slides.length) return;
+  if (slides.length < 2 || dots.length !== slides.length) return;
   let current = 0;
   let timer = null;
   const show = (index) => {
