@@ -41,7 +41,7 @@ bookingForm.addEventListener("submit",e=>{e.preventDefault();if(!bookingForm.rep
   const start = () => {
     stop();
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      timer = window.setInterval(() => show(current + 1), 5000);
+      timer = window.setInterval(() => show(current + 1), 2000);
     }
   };
   prev?.addEventListener("click", () => { show(current - 1); start(); });
