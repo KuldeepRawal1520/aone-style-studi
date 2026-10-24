@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root{--paper:#e9dece;--ink:#24170f;--muted:#665447;--gold:#b17a35;--dark:#21150e;--line:#c5ad91}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 Arial,sans-serif}
+    .wrap{max-width:760px;margin:0 auto;padding:28px 18px 50px}.card{background:#f4eadb;border:1px solid var(--line);padding:clamp(22px,5vw,42px)}
+    .eyebrow{font-size:10px;letter-spacing:.2em;font-weight:bold;color:#92642b}.brand{font:500 clamp(36px,8vw,54px)/1.02 Georgia,serif;margin:12px 0}.brand em{color:var(--gold)}
+    .intro{color:var(--muted);margin:0 0 26px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}.field.full{grid-column:1/-1}
+    label{font-size:12px;font-weight:bold}input,select,textarea{width:100%;padding:13px;border:1px solid #cbb99f;background:#fffaf2;color:var(--ink);font:inherit;border-radius:0}
+    button{width:100%;border:0;background:var(--dark);color:#fff3e2;padding:15px;font:inherit;font-weight:bold;cursor:pointer;margin-top:6px}button:disabled{opacity:.55;cursor:wait}
+    .note{font-size:12px;color:var(--muted)}.status{display:none;padding:14px;margin:16px 0 0;background:#e2d1b8;color:var(--ink);white-space:pre-line}.status.show{display:block}.price{font-size:12px;color:var(--muted)}@media(max-width:560px){.grid{grid-template-columns:1fr;gap:0}.field.full{grid-column:auto}}
+  </style>
+</head>
+<body>
+  <main class="wrap"><section class="card">
+    <div class="eyebrow">AONE STYLE STUDIO · RESERVE YOUR CHAIR</div>
+    <h1 class="brand">The art of<br>the <em>cut.</em></h1>
+    <p class="intro">Request an appointment with Ashok. Your request remains pending until Ashok confirms it by email.</p>
+    <form id="bookingForm">
+      <div class="field"><label for="service">Service</label><select id="service" required><option value="">Choose a service</option></select><div class="price" id="serviceInfo"></div></div>
+      <div class="grid">
+        <div class="field"><label for="date">Date</label><input id="date" type="date" required></div>
+        <div class="field"><label for="time">Available start time</label><select id="time" required disabled><option value="">Choose service and date first</option></select></div>
+        <div class="field"><label for="name">Full name</label><input id="name" maxlength="100" autocomplete="name" required></div>
+        <div class="field"><label for="phone">Phone number</label><input id="phone" type="tel" maxlength="40" autocomplete="tel" required></div>
+        <div class="field full"><label for="email">Email address</label><input id="email" type="email" maxlength="254" autocomplete="email" required></div>
+        <div class="field full"><label for="notes">Notes (optional)</label><textarea id="notes" rows="3" maxlength="500" placeholder="Anything Ashok should know?"></textarea></div>
+      </div>
+      <button id="submit" type="submit">Request Appointment ↗</button>
+      <p class="note">No payment is collected. Please wait for Ashok's email before arriving.</p>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+    </form>
+  </section></main>
+<script>
+const form=document.getElementById('bookingForm'),service=document.getElementById('service'),date=document.getElementById('date'),time=document.getElementById('time'),statusBox=document.getElementById('status'),submit=document.getElementById('submit'),serviceInfo=document.getElementById('serviceInfo');
+const now=new Date();date.min=new Date(now.getTime()-now.getTimezoneOffset()*60000).toISOString().slice(0,10);
+let serviceOptions=[];
+function showStatus(message){statusBox.textContent=message;statusBox.classList.add('show')}
+function loadSlots(){time.innerHTML='<option value="">Loading available times…</option>';time.disabled=true;if(!service.value||!date.value){time.innerHTML='<option value="">Choose service and date first</option>';return}
+google.script.run.withSuccessHandler(result=>{time.innerHTML='';if(!result.slots.length){time.add(new Option(result.message||'No available times',''));time.disabled=true;return}time.add(new Option('Choose a time',''));result.slots.forEach(s=>time.add(new Option(s.label,s.value)));time.disabled=false}).withFailureHandler(err=>{time.innerHTML='<option value="">Could not load times</option>';showStatus(err.message||'Unable to check availability.')}).getAvailableSlots(date.value,service.value)}
+google.script.run.withSuccessHandler(items=>{serviceOptions=items;items.forEach(s=>{const o=new Option(s.name+' · $'+s.price+' CAD',s.name);if(!s.duration){o.disabled=true;o.textContent+=' (timing to be confirmed)'}service.add(o)});}).withFailureHandler(err=>showStatus(err.message||'Could not load services.')).getBookingOptions();
+service.addEventListener('change',()=>{const s=serviceOptions.find(x=>x.name===service.value);serviceInfo.textContent=s?(s.duration?s.duration+' minute appointment':'Timing needs to be confirmed') :'';time.value='';loadSlots()});date.addEventListener('change',loadSlots);
+form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;submit.disabled=true;submit.textContent='Sending request…';statusBox.classList.remove('show');
+const payload={service:service.value,date:date.value,time:time.value,name:document.getElementById('name').value,phone:document.getElementById('phone').value,email:document.getElementById('email').value,notes:document.getElementById('notes').value};
+google.script.run.withSuccessHandler(result=>{showStatus(result.message+'\nReference: '+result.bookingId);form.reset();time.innerHTML='<option value="">Choose service and date first</option>';time.disabled=true;serviceInfo.textContent='';submit.disabled=false;submit.textContent='Request Appointment ↗';date.min=new Date(new Date().getTime()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10)}).withFailureHandler(err=>{showStatus(err.message||'The request could not be sent. Please try again.');submit.disabled=false;submit.textContent='Request Appointment ↗'}).createBooking(payload)});
+</script>
+</body>
+</html>
