@@ -11,7 +11,7 @@ menuToggle?.addEventListener("click",()=>{const open=mobileNav.classList.toggle(
 document.querySelectorAll(".mobile-nav a").forEach(a=>a.addEventListener("click",()=>{mobileNav.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");mobileNav.setAttribute("aria-hidden","true")}));
 document.querySelectorAll("[data-service]").forEach(a=>a.addEventListener("click",()=>serviceSelect.value=a.dataset.service));
 const today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());dateInput.min=today.toISOString().split("T")[0];
-bookingForm.addEventListener("submit",e=>{e.preventDefault();if(!bookingForm.reportValidity())return;toast.textContent="Nice choice — live availability will be connected next.";toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),4000)});
+bookingForm.addEventListener("submit",e=>{e.preventDefault();if(!bookingForm.reportValidity())return;toast.textContent="Thanks for trying the preview. Online booking is not live yet, so no appointment was submitted and no email was sent.";toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),4000)});
 
 
 // Accessible ten-photo hero slideshow with manual controls and autoplay.
