@@ -1,55 +1,76 @@
-const header=document.querySelector(".site-header");
-const menuToggle=document.querySelector(".menu-toggle");
-const mobileNav=document.querySelector(".mobile-nav");
-const toast=document.querySelector("#toast");
-const serviceSelect=document.querySelector("#service");
-const bookingForm=document.querySelector("#bookingForm");
-const dateInput=document.querySelector("#date");
+"use strict";
 
-window.addEventListener("scroll",()=>header.classList.toggle("scrolled",window.scrollY>20));
-menuToggle?.addEventListener("click",()=>{const open=mobileNav.classList.toggle("open");menuToggle.setAttribute("aria-expanded",String(open));mobileNav.setAttribute("aria-hidden",String(!open))});
-document.querySelectorAll(".mobile-nav a").forEach(a=>a.addEventListener("click",()=>{mobileNav.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");mobileNav.setAttribute("aria-hidden","true")}));
-document.querySelectorAll("[data-service]").forEach(a=>a.addEventListener("click",()=>serviceSelect.value=a.dataset.service));
-const today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());dateInput.min=today.toISOString().split("T")[0];
-bookingForm.addEventListener("submit",e=>{e.preventDefault();if(!bookingForm.reportValidity())return;toast.textContent="Thanks for trying the preview. Online booking is not live yet, so no appointment was submitted and no email was sent.";toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),4000)});
-
-
-// Accessible ten-photo hero slideshow with manual controls and autoplay.
 (() => {
+  const header = document.querySelector(".site-header");
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mobileNav = document.querySelector(".mobile-nav");
+
+  if (header) {
+    const updateHeader = () => header.classList.toggle("scrolled", window.scrollY > 20);
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+  }
+
+  const closeMobileMenu = () => {
+    if (!menuToggle || !mobileNav) return;
+    mobileNav.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open menu");
+    mobileNav.setAttribute("aria-hidden", "true");
+  };
+
+  if (menuToggle && mobileNav) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mobileNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+      mobileNav.setAttribute("aria-hidden", String(!isOpen));
+    });
+    mobileNav.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMobileMenu));
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        closeMobileMenu();
+        menuToggle.focus();
+      }
+    });
+    document.addEventListener("click", event => {
+      if (mobileNav.classList.contains("open") &&
+          !mobileNav.contains(event.target) &&
+          !menuToggle.contains(event.target)) closeMobileMenu();
+    });
+  }
+
   const banner = document.querySelector(".hero-banner");
   if (!banner) return;
   const slides = Array.from(banner.querySelectorAll(".banner-slide"));
-  const dots = Array.from(banner.querySelectorAll(".banner-dot"));
-  const counter = banner.querySelector("#bannerCounter");
-  const prev = banner.querySelector("#bannerPrev");
-  const next = banner.querySelector("#bannerNext");
-  if (slides.length < 2 || dots.length !== slides.length) return;
-  let current = 0;
-  let timer = null;
-  const show = (index) => {
-    current = (index + slides.length) % slides.length;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (slides.length < 2 || reducedMotion.matches) return;
+
+  let currentIndex = 0;
+  let timerId = null;
+  const showSlide = index => {
+    currentIndex = (index + slides.length) % slides.length;
     slides.forEach((slide, i) => {
-      const active = i === current;
+      const active = i === currentIndex;
       slide.classList.toggle("active", active);
       slide.setAttribute("aria-hidden", String(!active));
-      dots[i].classList.toggle("active", active);
-      dots[i].setAttribute("aria-pressed", String(active));
     });
-    if (counter) counter.textContent = String(current + 1).padStart(2, "0") + " / " + String(slides.length).padStart(2, "0");
   };
-  const stop = () => { if (timer) window.clearInterval(timer); timer = null; };
+  const stop = () => {
+    if (timerId !== null) window.clearInterval(timerId);
+    timerId = null;
+  };
   const start = () => {
     stop();
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      timer = window.setInterval(() => show(current + 1), 2000);
+    if (!document.hidden && !reducedMotion.matches) {
+      timerId = window.setInterval(() => showSlide(currentIndex + 1), 4500);
     }
   };
-  prev?.addEventListener("click", () => { show(current - 1); start(); });
-  next?.addEventListener("click", () => { show(current + 1); start(); });
-  dots.forEach((dot, i) => dot.addEventListener("click", () => { show(i); start(); }));
+  banner.addEventListener("mouseenter", stop);
+  banner.addEventListener("mouseleave", start);
   banner.addEventListener("focusin", stop);
   banner.addEventListener("focusout", start);
   document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
-  show(0);
+  if (typeof reducedMotion.addEventListener === "function") reducedMotion.addEventListener("change", start);
   start();
 })();
